@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Image Management</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" th:href="@{/css/stylish.css}">
+</head>
+<body>
+<div class="container" align="center">
+    <form th:action="@{/image/createImage}" th:object="${image}" method="post" enctype="multipart/form-data">
+        <h1 align="center">Create Image</h1>
+        <hr>
+        <div th:if="${param.success}" class="alert alert-success"
+             align="center" style="width: 20%">Saved Successfully
+        </div>
+        <div th:if="${param.nullFeild}" class="alert alert-danger"
+             align="center" style="width: 20%">Please complete all data
+        </div>
+        <div th:if="${param.size}" class="alert alert-danger"
+             align="center" style="width: 20%">File too large!
+        </div>
+        <!-- <span th:if="${message != null}" th:text="${message}"></span>
+         <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p> -->
+       
+        <input type="file" name="imagee" accept="image/png, image/jpeg, image/gif, image/jpg" style="width: 20%" class="form-control mb-4 col-4"/><br>
+        <input type="text" th:field="*{description}" placeholder="Description " name="description"
+               style="width: 20%" class="form-control mb-4 col-4"> <br>
+               
+        <div class="form-group blu-margin" >
+            <select class="form-control" th:field="*{category}"  id="category" style="width: 20%">
+                <option value="">Select One Category</option>
+                <option th:value="1">Living thing</option>
+                <option th:value="2">Machine</option>
+                <option th:value="3">Nature</option>
+            </select>
+        </div>
+               
+        <div >
+            <button type="submit" class="btn btn-success">Create</button>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

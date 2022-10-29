@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="ISO-8859-1">
+<title>Image Management</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" th:href="@{/css/stylish.css}">
+</head>
+<body>
+<div class="container" align="center">
+    <form th:action="@{/user/register}" th:object="${user}" method="post">
+        <h1 align="center">Create User</h1>
+        <hr>
+        <div th:if="${param.success}" class="alert alert-success"
+             align="center" style="width: 20%">Saved Successfully
+        </div>
+        <div th:if="${param.error}" class="alert alert-danger"
+             align="center" style="width: 20%">This Email is Already Exist
+        </div>
+        <div th:if="${param.invalidPattern}" class="alert alert-danger"
+             align="center" style="width: 20%">Invalid email address
+        </div>
+         <!-- <span th:if="${msg != null}" th:text="${msg}"></span>
+         <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>-->
+        <input type="text" th:field="*{email}" placeholder="Email " name="email"
+               style="width: 20%" class="form-control mb-4 col-4"> <br>
+        <input type="password" th:field="*{password}" placeholder="Password" name="password"
+               style="width: 20%" class="form-control mb-4 col-4"> <br>               
+
+
+        <div >
+            <button type="submit" class="btn btn-success">Register</button>
+        </div>
+        <div>
+             <span>Already registered? <a href="/" th:href="@{/login}">Login here</a></span>
+        </div>
+
+
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Image Management</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" th:href="@{/css/stylish.css}">
+</head>
+<body>
+	<div class="container" align="center" >
+		<form th:action="@{/login}" method="post">
+			<h2>Login</h2>
+			<hr>
+			<div th:if="${param.error}" class="alert alert-danger" align="center"
+				style="width: 20%">Invalid Email Or password
+			</div>
+
+
+			<input type="text" th:name="email" style="width: 20%"
+				placeholder="Email " class="form-control mb-4 col-4"> <br>
+			<input type="password" th:name="password" style="width: 20%"
+				placeholder="Password" class="form-control mb-4 col-4"> <br>
+			<button type="submit" class="btn btn-primary" style="width: 20%">Login</button>
+			<br>
+
+
+			<hr>
+		</form>
+		<div>
+			<a th:href="@{/user/}" class="btn btn-success" style="width: 100px">Register</a>
+			<a th:href="@{/}" class="btn btn-success" style="width: 120px">Landing Page</a>
+		</div>
+	</div>
+
+</body>
+</html>

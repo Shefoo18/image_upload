@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Image Management</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" th:href="@{/css/stylish.css}">
+</head>
+<body>
+	<div class="container">
+		<h1 align="center">Images</h1>
+		<div class="row">
+
+
+			<table border="1"
+				class="table table-responsive table-bordered table-striped">
+				<thead>
+					<tr align="center">
+						<th>Image</th>
+						<th>Description</th>
+						<th>Category</th>
+						<th style="width: 15%" >Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="img : ${images}">
+						<td><img th:src="@{${'/image/display/'+ img.id}}"
+							class="card img-fluid" style="width: 200px" /></td>
+						<td th:text="${img.description}"></td>
+						<td th:switch="${img.category}">
+						<span th:case="'1'">Living thing</span> 
+						<span th:case="'2'">Machine</span>
+						<span th:case="'3'">Nature</span></td>
+						<td><a
+							th:href="@{/image/accept/{id}(id=${img.id})}" th:if="${img.status} == null"
+							class="btn btn-primary btn-sm mb-3"> Accept </a> 
+							<a th:href="@{/image/reject/{id}(id=${img.id})}" th:if="${img.status} == null"
+							class="btn btn-danger" style="height: 31px;">Reject</a>
+							<span th:if="${img.status} == false">Rejected</span>
+							</td>
+												
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+
+</body>
+</html>
